@@ -17,6 +17,15 @@
     <!-- 扫描指定package下所有带有@Controller、@Service、@Resource、@Autowired的类，将其注册为Spring Beans -->
     <!-- <context:component-scan base-package="lly.framework.core.bootstrap.sample"></context:component-scan> -->
 
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:/properties/*.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+    </bean>
     
+    <import resource="classpath*:/spring/*.xml" />
 
 </beans>
