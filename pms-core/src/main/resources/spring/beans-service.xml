@@ -21,7 +21,7 @@
 <!--     <lly:serviceprovider protocol="dubbo" config="classpath:/services/lly-example-provider-services.xml" /> -->
 <!--     <lly:serviceconsumer protocol="dubbo" config="classpath:/services/lly-example-consumer-services.xml" /> -->
 
-    <lly:serviceprovider protocol="dubbo" config="classpath:/services/plan-core-provider-services.xml" />
+    <lly:serviceprovider protocol="dubbo" config="classpath:/services/pms-core-provider-services.xml" />
     
     <bean id="springContextHolder" class="xmu.lgp.lly.framework.spring.SpringContextHolder"></bean>
     

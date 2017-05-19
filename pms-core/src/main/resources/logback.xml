@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+    <property name="log.root.level" value="${log.root.level}" />
+    <property name="log.other.level" value="${log.other.level}" />
+    <property name="log.base" value="${log.base}" />
+    <property name="log.moduleName" value="${log.moduleName}" />
+    <property name="log.max.size" value="100MB" />
+
+    <contextName>${log.moduleName}</contextName>
+    <jmxConfigurator />
+    
+    
+
+</configuration>
