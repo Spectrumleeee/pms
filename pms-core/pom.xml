@@ -30,6 +30,43 @@
         </dependency>
     </dependencies>
     
+    <build>
+        <finalName>pms-core</finalName>
+        
+        <filters>
+            <filter>src/main/resources/config/${env}.properties</filter>
+        </filters>
+        
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>${basedir}/target/classes</targetPath>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.css</include>
+                </includes>
+                <excludes>
+                    <exclude>config/**</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>${basedir}/target/resources</targetPath>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.css</include>
+                </includes>
+                <excludes>
+                    <exclude>config/**</exclude>
+                </excludes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+    
     <profiles>
         <profile>
             <id>dev</id>

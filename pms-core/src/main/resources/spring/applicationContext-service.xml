@@ -11,8 +11,6 @@
         http://www.springframework.org/schema/aop 
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     
-    <!-- 激活annotation功能 -->
-    <context:annotation-config />  
     <!-- 扫描制定package下所有带有如@Controller, @Services, @Resource, @Ods, 并注册到Spring-->
     <context:component-scan base-package="xmu.lgp.pms.service.impl, xmu.lgp.pms.manager.impl" />
     
