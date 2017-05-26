@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<services>
+    
+    <!-- 规划管理接口 -->
+    <service name="planManager" interface="xmu.lgp.pms.manager.PlanManager" timeout="15" />
+    <!-- 用户管理接口 -->
+    <service name="userManager" interface="xmu.lgp.pms.manager.UserManager" timeout="15" />
+    
+</services>
