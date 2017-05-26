@@ -44,6 +44,11 @@
             <version>1.2</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.2.4.Final</version>
+        </dependency>
+        <dependency>
             <groupId>xmu.lgp.pms</groupId>
             <artifactId>pms-service</artifactId>
             <version>${project.parent.version}</version>

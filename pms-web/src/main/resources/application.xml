@@ -26,11 +26,11 @@
         </property>
         <property name="ignoreUnresolvablePlaceholders" value="true" />
     </bean>
-    
-    <!-- 导入其他的文件 -->
-    <import resource="classpath*:/spring/*.xml" />
 
     <!-- 激活annotation功能 -->
     <context:annotation-config />
+    
+    <!-- 导入其他的文件 -->
+    <import resource="classpath*:/spring/beans-service.xml" />
     
 </beans>

@@ -4,24 +4,24 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import xmu.lgp.pms.manager.PlanManager;
 
 @Controller
-@RequestMapping("plan")
+@RequestMapping("plans")
 public class PlanController {
-    
+
     @Resource
     PlanManager planManager;
-    
+
     public PlanController() {
-        System.out.println("init " + getClass());
+        System.err.println("init " + getClass());
     }
-    
-    @RequestMapping(method = RequestMethod.GET)
+
+    @RequestMapping("")
     public String showPlan() {
-        return "123";
+        System.err.println("showPlan:" + planManager.getTotalPalnNums());
+        return "plan";
     }
-    
+
 }
