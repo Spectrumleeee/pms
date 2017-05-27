@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import xmu.lgp.pms.domain.PlanInfo;
+import xmu.lgp.pms.dto.SensitiveDataDto;
 import xmu.lgp.pms.manager.PlanManager;
 
 @Controller
@@ -51,7 +52,9 @@ public class PlanController {
     
     @RequestMapping("query")
     public String query() {
-        PlanInfo planInfo = planManager.findPlanInfoById("123");
+        SensitiveDataDto sensitiveData = new SensitiveDataDto();
+        sensitiveData.setPhone("15999592916");
+        PlanInfo planInfo = planManager.findPlanInfoById("123", sensitiveData);
         System.err.println("query: " + planInfo);
         return "plan";
     }

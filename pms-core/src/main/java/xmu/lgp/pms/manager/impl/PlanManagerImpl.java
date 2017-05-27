@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import xmu.lgp.pms.domain.PlanInfo;
+import xmu.lgp.pms.dto.SensitiveDataDto;
 import xmu.lgp.pms.manager.PlanManager;
 import xmu.lgp.pms.service.PlanService;
 
@@ -41,8 +42,8 @@ public class PlanManagerImpl implements PlanManager {
     }
     
     @Override
-    public PlanInfo findPlanInfoById(String planId) {
-        logger.info("查询·计划，planId={}", planId);
+    public PlanInfo findPlanInfoById(String planId, SensitiveDataDto sensitiveData) {
+        logger.info("查询·计划，planId={}, sensitiveData={}", planId, sensitiveData);
         PlanInfo planInfo = new PlanInfo();
         planInfo.setId(planId);
         planInfo.setContent("更新计划");
