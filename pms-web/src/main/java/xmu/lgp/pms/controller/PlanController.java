@@ -1,10 +1,13 @@
 package xmu.lgp.pms.controller;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import xmu.lgp.pms.domain.PlanInfo;
 import xmu.lgp.pms.manager.PlanManager;
 
 @Controller
@@ -18,9 +21,38 @@ public class PlanController {
         System.err.println("init " + getClass());
     }
 
-    @RequestMapping("")
-    public String showPlan() {
+    @RequestMapping("show")
+    public String show() {
         System.err.println("showPlan:" + planManager.getTotalPalnNums());
+        return "plan";
+    }
+    
+    @RequestMapping("update")
+    public String update() {
+        PlanInfo planInfo = new PlanInfo();
+        planInfo.setId("123");
+        planInfo.setContent("每天步行10000步");
+        planInfo.setTime(new Date());
+        planManager.update(planInfo);
+        return "plan";
+    }
+    
+    @RequestMapping("add")
+    public String add() {
+        planManager.add("每天步行20000步");
+        return "plan";
+    }
+    
+    @RequestMapping("delete")
+    public String delete() {
+        planManager.delete("123");
+        return "plan";
+    }
+    
+    @RequestMapping("query")
+    public String query() {
+        PlanInfo planInfo = planManager.findPlanInfoById("123");
+        System.err.println("query: " + planInfo);
         return "plan";
     }
 

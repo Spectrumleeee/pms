@@ -20,5 +20,10 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>xmu.lgp.pms</groupId>
+      <artifactId>pms-common</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
   </dependencies>
 </project>
