@@ -11,6 +11,11 @@ import xmu.lgp.pms.domain.PlanInfo;
 import xmu.lgp.pms.dto.SensitiveDataDto;
 import xmu.lgp.pms.manager.PlanManager;
 
+/**
+ * 
+ * @author ASUS
+ *
+ */
 @Controller
 @RequestMapping("plans")
 public class PlanController {
