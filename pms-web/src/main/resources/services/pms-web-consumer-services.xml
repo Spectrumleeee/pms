@@ -3,7 +3,8 @@
 <services>
     
     <!-- 规划管理接口 -->
-    <service sensitive="true" name="planManager" interface="xmu.lgp.pms.manager.PlanManager" timeout="15" />
+	<!-- <service sensitive="true" name="planManager" interface="xmu.lgp.pms.manager.PlanManager" timeout="15" /> -->
+    <service name="planManager" interface="xmu.lgp.pms.manager.PlanManager" timeout="15" />
     <!-- 用户管理接口 -->
     <service name="userManager" interface="xmu.lgp.pms.manager.UserManager" timeout="15" />
     

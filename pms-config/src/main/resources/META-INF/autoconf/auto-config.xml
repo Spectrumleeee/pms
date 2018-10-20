@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <group name="abc">
+    	<property name="app_process_name" defaultValue="dev.xmu.lgp.pms.core" description="应用名称" />
+    	<property name="dubbo_application_name" defaultValue="dev.xmu.lgp.pms.core" description="dubbo应用名称" />
+    	<property name="dubbo_registry_address" defaultValue="127.0.0.1" description="dubbo注册地址" />
+    	<property name="dubbo_protocol_port" defaultValue="29028" description="dubbo注册端口号" />
+    </group>
+    <script>
+        <generate template="dubbo.properties.vm" destfile="dubbo.properties" charset="UTF-8"/> 
+    </script>
+</config>
