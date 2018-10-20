@@ -14,7 +14,7 @@ import xmu.lgp.pms.manager.PlanManager;
 /**
  * 
  * @author ASUS
- * 456
+ * 123456
  */
 @Controller
 @RequestMapping("plans")
