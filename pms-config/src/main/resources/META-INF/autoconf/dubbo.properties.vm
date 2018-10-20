@@ -1,0 +1,4 @@
+app.process.name=${app_process_name}
+dubbo.application.name=${dubbo_application_name}
+dubbo.registry.address=${dubbo_registry_address}
+dubbo.protocol.port=${dubbo_protocol_port}

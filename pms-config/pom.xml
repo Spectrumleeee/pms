@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>xmu.lgp.pms</groupId>
+        <artifactId>pms</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>pms-config</artifactId>
+    <name>pms-config</name>
+    <url>http://maven.apache.org</url>
+    
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<autoconfig.path>${user.home}/antx-config/${artifactId}/${devModel}</autoconfig.path>
+		<autoconfig.file>antx.properties</autoconfig.file>
+	</properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>xmu.lgp.pms</groupId>
+            <artifactId>pms-service</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+    
+    <build>
+
+		<plugins>
+			<plugin>
+				<groupId>com.alibaba.citrus.tool</groupId>
+				<artifactId>autoconfig-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<userProperties>${autoconfig.path}/${autoconfig.file}</userProperties>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>autoconfig</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+    </build>
+   
+    
+    	<profiles>
+	    <!-- 开发环境 -->
+	    <profile>
+	        <id>dev</id>
+	        <properties>
+	            <devModel>dev</devModel>
+	            <autoconfig.file>antx.properties</autoconfig.file>
+	        </properties>
+	        <activation>
+	            <activeByDefault>true</activeByDefault>
+	        </activation>
+	    </profile>
+	    <!-- 生产环境 -->
+	    <profile>
+	        <id>prd</id>
+	        <properties>
+	            <devModel>prd</devModel>
+	            <autoconfig.file>antx.properties</autoconfig.file>
+	        </properties>
+	    </profile>
+    </profiles>
+    
+</project>
