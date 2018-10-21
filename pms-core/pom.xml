@@ -33,7 +33,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>pms-core</finalName>
 
 		<filters>
 			<filter>src/main/resources/config/${env}.properties</filter>
