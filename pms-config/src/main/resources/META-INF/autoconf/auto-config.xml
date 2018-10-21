@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-    <group name="abc">
+    <group name="dubbo">
     	<property name="app.process.name" defaultValue="dev.xmu.lgp.pms.core" description="应用名称" />
     	<property name="dubbo.application.name" defaultValue="dev.xmu.lgp.pms.core" description="dubbo应用名称" />
     	<property name="dubbo.registry.address" defaultValue="127.0.0.1" description="dubbo注册地址" />
     	<property name="dubbo.protocol.port" defaultValue="29028" description="dubbo注册端口号" />
     </group>
+    <group name="logback">
+    	<property name="log.root.level" defaultValue="DEBUG" description="root日志级别" />
+    	<property name="log.other.level" defaultValue="DEBUG" description="other日志级别" />
+    	<property name="log.base" defaultValue="logs" description="根目录" />
+    	<property name="log.moduleName" defaultValue="pms-config" description="模块名" />
+    	<property name="log.max.size" defaultValue="100MB" description="日志最大大小" />
+    	<property name="log.batchjob.level" defaultValue="DEBUG" description="批量任务日志级别" />
+    	<property name="log.scheduler.level" defaultValue="DEBUG" description="任务调度日志级别" />
+    	<property name="log.stdout.ref" defaultValue="" description="标准输出日志级别" />
+    </group>
+    
     <script>
         <generate template="dubbo.properties.vm" destfile="dubbo.properties" charset="UTF-8"/> 
+        <generate template="logback.xml.vm" destfile="logback.xml" charset="UTF-8"/> 
     </script>
 </config>
