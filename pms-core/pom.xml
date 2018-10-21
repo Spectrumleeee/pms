@@ -33,49 +33,47 @@
 	</dependencies>
 
 	<build>
-
-		<filters>
-			<filter>src/main/resources/config/${env}.properties</filter>
-		</filters>
-
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<targetPath>${basedir}/target/classes</targetPath>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-					<include>**/*.css</include>
-				</includes>
-				<excludes>
-					<exclude>config/**</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<targetPath>${basedir}/target/resources</targetPath>
-				<includes>
-					<include>**/*.properties</include>
-					<include>**/*.xml</include>
-					<include>**/*.css</include>
-				</includes>
-				<excludes>
-					<exclude>config/**</exclude>
-				</excludes>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
+		<plugins>
+			<plugin>
+				<groupId>com.alibaba.citrus.tool</groupId>
+				<artifactId>autoconfig-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<!-- 使用的配置文件 -->
+					<userProperties>${autoconfig.path}/${autoconfig.file}</userProperties>
+					<!-- 需要配置的目标，默认是jar包，一般不需要指定，本地测试时指定target/classes -->
+					<dest>target/classes</dest>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>autoconfig</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<profiles>
+		<!-- 开发环境 -->
 		<profile>
 			<id>dev</id>
+			<properties>
+				<devModel>dev</devModel>
+				<autoconfig.file>antx.properties</autoconfig.file>
+			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+		</profile>
+		<!-- 生产环境 -->
+		<profile>
+			<id>prd</id>
 			<properties>
-				<env>dev</env>
+				<devModel>prd</devModel>
+				<autoconfig.file>antx.properties</autoconfig.file>
 			</properties>
 		</profile>
 	</profiles>
