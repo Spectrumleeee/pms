@@ -1,0 +1,2 @@
+1. mvn clean compile
+2. run Main Class: xmu.lgp.lly.integration.Main
