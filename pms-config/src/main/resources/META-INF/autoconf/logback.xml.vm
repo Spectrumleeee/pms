@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+    <property name="log.root.level" value="${log.root.level}" />
+    <property name="log.other.level" value="${log.other.level}" />
+    <property name="log.base" value="${log.base}" />
+    <property name="log.moduleName" value="${log.moduleName}" />
+    <property name="log.max.size" value="${log.max.size}" />
+
+    <contextName>${log.moduleName}</contextName>
+    <jmxConfigurator />
+    
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender" >
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>    
+        </layout>
+    </appender>
+    
+    <appender name="file.all" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <File>${log.base}/${log.moduleName}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_all_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP" >
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>
+        </layout>
+    </appender>
+    
+    <appender name="file.error" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <File>${log.base}/${log.moduleName}_err.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_err_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP" >
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter" >
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    
+    <appender name="file.all.other" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <File>${log.base}/${log.moduleName}_other.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_other_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP" >
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>
+        </layout>
+    </appender>
+    
+    <appender name="file.lly" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <File>${log.base}/${log.moduleName}_lly.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_lly_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP" >
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>
+        </layout>
+    </appender>
+    
+    <appender name="file.all.scheduler" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <File>${log.base}/${log.moduleName}_scheduler.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_scheduler_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP" >
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="file.all.batchjob" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <File>${log.base}/${log.moduleName}_batchjob.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy" >
+            <FileNamePattern>${log.base}/archive/${log.moduleName}_batchjob_%d{yyyy-MM-dd}.%i.log.zip</FileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP" >
+                <maxFileSize>${log.max.size}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout" >
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|${log.moduleName}|[%thread]|%X{lly.channelCode}|[%X{lly.requestNo}|%X{lly.consumerIp}]|%X{lly.invocationInterface}.%X{lly.invocationMethod}|%logger.%method\(\):%L|%msg%n</pattern>
+        </layout>
+    </appender>
+    
+    <appender name="file.async" class="ch.qos.logback.classic.AsyncAppender" >
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="file.all" />
+    </appender>
+    
+    <appender name="file.async.other" class="ch.qos.logback.classic.AsyncAppender" >
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="file.all.other" />
+    </appender>
+    
+    <appender name="file.async.scheduler" class="ch.qos.logback.classic.AsyncAppender" >
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="file.all.scheduler" />
+    </appender>
+    
+    <appender name="file.async.batchjob" class="ch.qos.logback.classic.AsyncAppender" >
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <includeCallerData>true</includeCallerData>
+        <appender-ref ref="file.all.batchjob" />
+    </appender>
+    
+    <logger name="xmu.lgp.pms" additivity="false" >
+        <level value="${log.root.level}" />
+        ${log.stdout.ref}
+        <appender-ref ref="file.async" />
+        <appender-ref ref="fila.error" />
+    </logger>
+    
+    <!-- 批处理job日志分离到other -->
+    <logger name="xmu.lgp.pms.batch" additivity="true" >
+        <level value="${log.batchjob.level}" />
+        ${log.stdout.ref}
+        <appender-ref ref="file.async.batchjob" />
+        <appender-ref ref="file.error" />
+    </logger>
+    
+    <!-- 调度日志分离到other -->
+    <logger name="xmu.lgp.lly.scheduler" additivity="false" >
+        <level value="${log.scheduler.level}" />
+        ${log.stdout.ref}
+        <appender-ref ref="file.async.scheduler" />
+        <appender-ref ref="file.error" />
+    </logger>
+    
+    <!-- LLY框架日志 -->
+    <logger name="xmu.lgp.lly.integration.dubbo.filter.SetContextFilter" additivity="false" >
+        <level value="${log.other.level}" />
+        ${log.stdout.ref}
+        <appender-ref ref="file.lly" />
+        <appender-ref ref="file.async" />
+        <appender-ref ref="file.error" />
+    </logger>
+    
+    <logger name="xmu.lgp.lly.integration.dubbo.filter.ExceptionFilter" additivity="false" >
+        <level value="${log.other.level}" />
+        ${log.stdout.ref}
+        <appender-ref ref="file.lly" />
+        <appender-ref ref="file.async" />
+        <appender-ref ref="file.error" />
+    </logger>
+    
+    <root level="${log.root.level}" >
+        ${log.stdout.ref}
+        <appender-ref ref="file.async" />
+        <appender-ref ref="file.error" />
+    </root>
+    
+</configuration>

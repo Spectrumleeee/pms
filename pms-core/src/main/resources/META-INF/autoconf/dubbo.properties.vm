@@ -4,19 +4,12 @@ app.jvm.xmn=750m
 app.jvm.permSize=64m
 app.jvm.maxPermSize=256m
 app.jvm.xss=256k
-#app.jvm.gcLogFile=st.com.lz.ces.core_gc.log
-#app.jvm.userDefOption=
-
 app.process.name=${app.process.name}
 
 dubbo.container=spring,llyreport
 dubbo.spring.config=classpath:application.xml
-
-dubbo.application.name=${dubbo.application.name}
-#dubbo.application.logger=slf4j
-
-dubbo.registry.address=${dubbo.registry.address}
 dubbo.registry.file=.dubbo/${dubbo.application.name}.cache
-
-dubbo.protocol.name=dubbo
+dubbo.application.name=${dubbo.application.name}
+dubbo.registry.address=${dubbo.registry.address}
 dubbo.protocol.port=${dubbo.protocol.port}
+dubbo.protocol.name=dubbo
