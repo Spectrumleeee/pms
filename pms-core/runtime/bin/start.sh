@@ -3,7 +3,6 @@ cd `dirname $0`
 BIN_DIR=`pwd`
 cd ..
 DEPLOY_DIR=`pwd`
-CONF_DIR=$DEPLOY_DIR/conf
 LOGS_DIR=$DEPLOY_DIR/logs
 STDOUT_FILE=$LOGS_DIR/stdout.log
 START_REPORT_FILE=$LOGS_DIR/shell.log
@@ -32,7 +31,8 @@ echoReport()
    echo $* | tee -a "$START_REPORT_FILE"
 }
 
-SERVER_NAME=`sed '/^app.process.name/!d;s/.*=//' conf/dubbo.properties | tr -d '\r'`
+#SERVER_NAME=`sed '/^app.process.name/!d;s/.*=//' conf/dubbo.properties | tr -d '\r'`
+SERVER_NAME="pms-core"
 if [ -z "$SERVER_NAME" ]; then
     SERVER_NAME=`hostname`
 fi
@@ -88,8 +88,8 @@ else
 fi
 
 echoReport "Starting the $SERVER_NAME ..."
-reportTo "java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS $JAVA_PROPERTIES_OPTS -classpath $CONF_DIR:$LIB_JARS com.lz.lsf.integration.Main"
-nohup java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS $JAVA_PROPERTIES_OPTS -classpath $CONF_DIR:$LIB_JARS com.lz.lsf.integration.Main > $STDOUT_FILE 2>&1 &
+reportTo "java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS $JAVA_PROPERTIES_OPTS -classpath $LIB_JARS com.lz.lsf.integration.Main"
+nohup java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS $JAVA_PROPERTIES_OPTS -classpath $LIB_JARS xmu.lgp.lly.integration.Main > $STDOUT_FILE 2>&1 &
 sleep 1
 APP_PID=`ps -ef -ww | grep "java" | grep " -DappName=$SERVER_NAME " | awk '{print $2}'`
 
@@ -133,4 +133,3 @@ else
     echoReport "STDOUT: $STDOUT_FILE"
     exit 0
 fi
-
