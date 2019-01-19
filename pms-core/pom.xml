@@ -42,13 +42,33 @@
 					<!-- 使用的配置文件 -->
 					<userProperties>${autoconfig.path}/${autoconfig.file}</userProperties>
 					<!-- 需要配置的目标，默认是jar包，一般不需要指定，本地测试时指定target/classes -->
-					<dest>target/classes</dest>
+<!-- 					<dest>target/classes</dest> -->
 				</configuration>
 				<executions>
 					<execution>
 						<phase>package</phase>
 						<goals>
 							<goal>autoconfig</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<!-- not append assembly id in release file name -->
+					<appendAssemblyId>false</appendAssemblyId>
+					<finalName>${project.artifactId}</finalName>
+					<descriptors>
+						<descriptor>src/main/assemble/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
