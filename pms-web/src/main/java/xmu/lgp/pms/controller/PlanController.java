@@ -1,11 +1,15 @@
 package xmu.lgp.pms.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import xmu.lgp.pms.domain.PlanInfo;
 import xmu.lgp.pms.dto.SensitiveDataDto;
@@ -21,6 +25,20 @@ import xmu.lgp.pms.manager.PlanManager;
 @RequestMapping("plans")
 public class PlanController {
 
+	public static List<String> prettyStone = new ArrayList<String>();
+	
+	public static Random random = new Random();
+	
+	static {
+		prettyStone.add("石倩是个大坏蛋");
+		prettyStone.add("石倩是个大笨蛋");
+		prettyStone.add("石倩是个大傻瓜");
+		prettyStone.add("石倩是个大好人");
+		prettyStone.add("石倩是个大蒜头");
+		prettyStone.add("石倩是个大西瓜");
+		prettyStone.add("石倩是个大萝卜");
+	}
+	
     @Resource
     PlanManager planManager;
 
@@ -29,9 +47,16 @@ public class PlanController {
     }
 
     @RequestMapping("show")
-    public String show() {
-        System.err.println("showPlan:" + planManager.getTotalPalnNums());
-        return "plan";
+    public ModelAndView show() {
+        
+        ModelAndView model = new ModelAndView("prettyStone");
+        String content = prettyStone.get(random.nextInt(prettyStone.size()));
+        
+        System.err.println("showPlan:" + content);
+        
+        model.addObject("content", content);
+        
+        return model;
     }
     
     @RequestMapping("update")
